@@ -3,24 +3,20 @@ const router = express.Router();
 
 // route to post data for (Post API /data)
 router.get('/', (req, res, next) => {
- res.send('<form action="/data" method="POST"><input type="text" name= "anystring"/><button type="submit">Submit</submit></form>');
+ res.send({status : "success"})
 })
+ const data = [];
 // Post API for anystring and return of that string
 router.post('/data', (req, res, next) => {
- const anystring = req.body.anystring
+ data.push(req.body);
   
- res.status(201).json({
-  message: 'Post created succesfuly',
-  post: {id: new Date().toISOString(), data: anystring}
- });
+ res.status(200).json(data)
  
 })
 // Get API for anystring as data
 router.get('/data', (req, res, next) => {
  
- res.status(200).json([{data: "I am happy to be part of this bootcamp"},
-{data: "Jazakumullahu haerah to the organizers of this bootcamp"}
-]);
+ res.status(200).json(data);
  
 })
-module.exports = router;
+module.exports = router
