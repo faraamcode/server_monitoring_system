@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 // route to post data for (Post API /data)
 router.get('/', (req, res, next) => {
  res.send({status : "success"})
