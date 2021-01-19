@@ -7,7 +7,16 @@ router.get('/', (req, res, next) => {
  const data = [];
 // Post API for anystring and return of that string
 router.post('/data', (req, res, next) => {
- data.push(req.body);
+ data.push(req.body); // How about doing this as below
+
+ /*
+ const data  = req.body
+ res.status(200).json(data)
+
+ You can even destructure the request body object as below.
+
+ const {}  = req.body 
+ */ 
   
  res.status(200).json(data)
  
