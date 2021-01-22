@@ -4,7 +4,7 @@ const bodyParser = require('body-parser'); // Check below comment
 const dataRoute = require('./route/data')
 const userRoute = require('./route/user')
 const app = express()
-app.use(bodyParser.json())//Comment this and do as the Multiline comment below.
+app.use(express.json())//Comment this and do as the Multiline comment below.
 
 /* 
 app.use(express.json()) // This will worj the same way body-parser works

@@ -1,9 +1,10 @@
+const dbDetails = require("./secrete/data")
 const Pool = require("pg").Pool;
 const pool = new Pool({
- user: "postgres",
- password: "Gbemisola1.",
- host : "localhost",
- database: "bootcamp"
+ user: dbDetails.database.user,
+ password: dbDetails.database.password,
+ host : dbDetails.database.host,
+ database: dbDetails.database.database
 })
 
 module.exports = pool;
