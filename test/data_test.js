@@ -34,6 +34,21 @@ describe("Data route test", function(){
    response.body.length.should.not.equal(0)
    done();
   })
+})
+
+
+  it("test to check post of /data with empty text", (done)=>{
+   const data = ""
+  chai.request('http://localhost:3000')
+  .post("/data")
+  .send(data)
+  .end((err, response)=>{
+
+  
+   response.should.have.status(400);
+   response.body.should.have.property("error")
+   done();
+  })
  })
 
  //  get /data testing
@@ -61,12 +76,12 @@ describe("Data route test", function(){
    done();
   })
  })
+
 })
-
-
 // /user api
 
-describe("user api test", ()=>{
+//  user signup
+describe("user signup test", ()=>{
   it("user signup successfull", (done)=>{
     const crendential = {
       email : "babatunakinwale@yahoo.com",
@@ -142,4 +157,54 @@ describe("user api test", ()=>{
     done();
     })
   })
+})
+
+//  user login
+describe("user login test", ()=>{
+
+  it("sign in with correct credentials", (done)=>{
+    const crendential = {
+      email : "babatunakinwale@yahoo.com",
+      password: "123456789"
+    }
+    chai.request("http://localhost:3000")
+    .post("/user/login")
+    .send(crendential)
+    .end((err, response)=>{
+    response.should.have.status(200);
+    response.body.should.have.property("session");
+    done()
+    })
+  })
+
+    it("login with wrong password", (done)=>{
+    const crendential = {
+      email : "babatunakinwale@yahoo.com",
+      password: "1234567"
+    }
+    chai.request("http://localhost:3000")
+    .post("/user/login")
+    .send(crendential)
+    .end((err, response)=>{
+    response.should.have.status(400);
+    response.body.should.have.property("error");
+    done();
+    })
+  })
+      it("login with wrong email", (done)=>{
+    const crendential = {
+      email : "babatunakinwale@yah.com",
+      password: "1234567"
+    }
+    chai.request("http://localhost:3000")
+    .post("/user/login")
+    .send(crendential)
+    .end((err, response)=>{
+    response.should.have.status(400);
+    response.body.should.have.property("error");
+    done();
+    })
+  })
+    // entering of empty details or email without "@" and password greter than 3 characters
+
 })

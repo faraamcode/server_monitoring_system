@@ -6,12 +6,17 @@ exports.getHome = (req, res, next) => {
 return res.send({status : "success"})
 }
 exports.getData = (req, res, next) => {
-
+if (req.body.hasOwnProperty("data")) {
+ data.push(req.body); // How about doing this as below
+ 
+ res.status(200).json(data)
+}else{
+ res.status(400).json({error: "empty text"})
+}
 
 
 
   
- data.push(req.body); // How about doing this as below
 
  /*
  const data  = req.body
@@ -22,7 +27,6 @@ exports.getData = (req, res, next) => {
  const {}  = req.body 
  */ 
   
- res.status(200).json(data)
 }
 exports.postData =(req, res, next) => {
  if(data.length === 0){
