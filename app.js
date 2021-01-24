@@ -1,5 +1,5 @@
 const express = require('express')
-const bodyParser = require('body-parser'); // Check below comment 
+// const bodyParser = require('body-parser'); // Check below comment 
 // whenever I try to remove bodyParser my post will stop working
 const dataRoute = require('./route/data')
 const userRoute = require('./route/user')

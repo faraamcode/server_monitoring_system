@@ -1,30 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const dataControler = require("../controllers/data")
 // route to post data for (Post API /data)
-router.get('/', (req, res, next) => {
- res.send({status : "success"})
-})
- const data = [];
+router.get('/', dataControler.getHome)
 // Post API for anystring and return of that string
-router.post('/data', (req, res, next) => {
- data.push(req.body); // How about doing this as below
-
- /*
- const data  = req.body
- res.status(200).json(data)
-
- You can even destructure the request body object as below.
-
- const {}  = req.body 
- */ 
-  
- res.status(200).json(data)
- 
-})
+router.post('/data', dataControler.getData )
 // Get API for anystring as data
-router.get('/data', (req, res, next) => {
- 
- res.status(200).json(data);
- 
-})
+router.get('/data', dataControler.postData )
 module.exports = router
