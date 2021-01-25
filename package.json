@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha",
+    "coverage": "nyc --reporter=lcov mocha && codecov",
     "start": "nodemon app.js"
   },
   "repository": {
@@ -25,9 +26,11 @@
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "codecov": "^3.8.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
     "pg": "^8.5.1"
   }
 }
